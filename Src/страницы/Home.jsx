@@ -33,15 +33,21 @@ function Home() {
 
   React.useEffect(() => {
     dispatch(fetchPizzas(sortBy, category));
-  }, [category, sortBy]);
+  }, [dispatch, category, sortBy]);
 
-  const onSelectCategory = React.useCallback((index) => {
-    dispatch(setCategory(index));
-  }, []);
+  const onSelectCategory = React.useCallback(
+    (index) => {
+      dispatch(setCategory(index));
+    },
+    [dispatch]
+  );
 
-  const onSelectSortType = React.useCallback((type) => {
-    dispatch(setSortBy(type));
-  }, []);
+  const onSelectSortType = React.useCallback(
+    (type) => {
+      dispatch(setSortBy(type));
+    },
+    [dispatch]
+  );
 
   const handleAddPizzaToCart = (obj) => {
     dispatch({
